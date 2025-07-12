@@ -11,3 +11,5 @@ Bug Detection: Identify potential bugs, performance issues, and security vulnera
 AI Assistant: Chat directly with an AI for general coding questions or to refine your understanding.
 
 Language Auto-Detection: Automatically figures out the programming language you're using.
+
+I have just started using github, so feel free to leave your feedback, @worldly
