@@ -1,1 +1,191 @@
+body {
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
 
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1e3a8a, #4f46e5, #d946ef, #ec4899);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+    z-index: 0;
+}
+
+html.dark .background-gradient {
+    background: linear-gradient(45deg, #1e1b4b, #312e81, #581c87, #831843);
+    background-size: 400% 400%;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+textarea {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 20px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+html.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #4b5568;
+}
+
+.loader {
+    border-color: rgba(255, 255, 255, 0.2);
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.tab-btn.active {
+    @apply bg-blue-100 dark:bg-gray-700 text-blue-700 dark:text-blue-300;
+}
+.tab-btn:not(.active) {
+    @apply text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700;
+}
+
+.placeholder {
+    @apply flex-grow flex flex-col justify-center items-center h-full text-center text-gray-400 dark:text-gray-500;
+}
+
+.ai-output-content {
+    line-height: 1.7;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.ai-output-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+html.dark .ai-output-content h3 {
+    border-bottom-color: #374151;
+}
+
+.ai-output-content p {
+    margin-bottom: 1rem;
+}
+
+.ai-output-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.ai-output-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.ai-output-content li {
+    margin-bottom: 0.5rem;
+}
+
+.ai-output-content code:not(pre > code) {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    border-radius: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+html.dark .ai-output-content code:not(pre > code) {
+    background-color: #374151;
+    color: #f3f4f6;
+}
+
+.ai-output-content pre {
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.chat-message {
+    @apply p-3 rounded-lg mb-3 max-w-[90%];
+    line-height: 1.5;
+}
+
+.chat-message.user {
+    @apply bg-blue-500 text-white ml-auto;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-message.ai {
+    @apply bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 mr-auto;
+    border-bottom-left-radius: 2px;
+}
+
+.chat-message.ai .ai-output-content h3 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #d1d5db;
+}
+
+html.dark .chat-message.ai .ai-output-content h3 {
+    border-bottom-color: #4b5563;
+}
+
+.chat-message.ai .ai-output-content p,
+.chat-message.ai .ai-output-content ul,
+.chat-message.ai .ai-output-content ol,
+.chat-message.ai .ai-output-content li {
+    margin-bottom: 0.5rem;
+}
+
+.toast {
+    animation: toast-in 0.5s forwards, toast-out 0.5s forwards 2.5s;
+    opacity: 0;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes toast-in {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-out {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
